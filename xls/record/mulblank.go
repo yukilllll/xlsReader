@@ -58,6 +58,9 @@ func (r *MulBlank) Read(stream []byte) {
 	for i := 0; i <= int(cl-cf); i++ {
 		sPoint := 4 + (i * 6)
 		var indexXF [2]byte
+		if len(stream) < sPoint {
+			continue
+		}
 		copy(indexXF[:], stream[sPoint:sPoint+2])
 		r.rgixfe = append(r.rgixfe, indexXF)
 	}
